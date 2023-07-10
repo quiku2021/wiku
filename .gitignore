@@ -1,0 +1,4 @@
+/otros
+/static/documents/*
+.venv
+*__pycache__
