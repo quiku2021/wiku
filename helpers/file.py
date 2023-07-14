@@ -5,8 +5,7 @@ from fastapi import UploadFile, File
 from pathlib import Path
 import os
 import shutil
-from helpers.text import convert_pdf_to_text, convert_docx_to_text, convert_pptx_to_text, convert_rtf_to_text, clean_text
-
+from helpers.text import convert_pdf_to_text, convert_docx_to_text, convert_pptx_to_text, convert_rtf_to_text, convert_text_to_object, clean_text
 
 def save_file(file: UploadFile = File(...)) -> Save_file:
     is_valid_format = validate_format(str(file.filename))
@@ -40,4 +39,4 @@ def file_converter(url_file:Path):
             text = convert_pptx_to_text(url_file)
         elif file.type_file == type_extension['RTF']:
             text = convert_rtf_to_text(url_file)
-        return clean_text(text)
+        return convert_text_to_object(clean_text(text))

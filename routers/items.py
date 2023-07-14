@@ -17,7 +17,7 @@ async def item(id: int):
     pass
 
 @router.post("/")
-async def create_item(id: int, file: UploadFile = File(...))->str:
+async def create_item(id: int, file: UploadFile = File(...)):
     response = save_file(file)
     if response.status: 
         data = file_converter(response.url_file)
